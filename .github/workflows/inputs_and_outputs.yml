@@ -5,6 +5,7 @@ on:
       input1:
         required: true
         type: string
+        default: none # the custom value will be defined in the caller workflow
     outputs:
       firstword:
         description: "The first output string"
@@ -26,7 +27,7 @@ jobs:
         run: echo "output2=world" >> $GITHUB_OUTPUT 
 
   print_to_console:
-   name: print ouputs
+   name: print inputs and ouputs
    runs-on: ubuntu-latest
    needs: [set_outputs]
    steps:
