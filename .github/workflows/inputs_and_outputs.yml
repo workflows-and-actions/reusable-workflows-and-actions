@@ -1,6 +1,10 @@
 name: Demo of using inputs and outputs
 on:
   workflow_call:
+    inputs:
+      input1:
+        required: true
+        type: string
     outputs:
       firstword:
         description: "The first output string"
@@ -26,5 +30,6 @@ jobs:
    runs-on: ubuntu-latest
    needs: [set_outputs]
    steps:
+    - run: echo ${{ inputs.input1 }}
     - run: echo '${{ toJSON(needs.set_outputs.outputs) }}'
     - run: echo done with test.yml reusable workflow
