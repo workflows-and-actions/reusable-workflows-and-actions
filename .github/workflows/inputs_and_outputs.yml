@@ -1,4 +1,4 @@
-name: Useage of inputs, secrets, and outputs
+name: Demo of using inputs and outputs
 on:
   workflow_call:
     outputs:
