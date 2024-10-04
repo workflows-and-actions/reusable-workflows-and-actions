@@ -5,7 +5,6 @@ on:
       input1:
         required: true
         type: string
-        default: none # the custom value will be defined in the caller workflow
     outputs:
       firstword:
         description: "The first output string"
