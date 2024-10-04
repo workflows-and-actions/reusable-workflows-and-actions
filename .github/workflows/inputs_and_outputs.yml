@@ -3,7 +3,7 @@ on:
   workflow_call:
     inputs:
       input1:
-        required: true
+        required: true  # if 'required' is 'false', set a default value using default: somevalue
         type: string
     outputs:
       firstword:
