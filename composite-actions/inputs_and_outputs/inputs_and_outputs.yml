@@ -1,0 +1,22 @@
+name: Demo of using inputs and outputs
+description: 'use input, give output'
+inputs:
+  input1:
+    required: true  # if 'required' is 'false', set a default value using default: somevalue
+    type: string
+outputs:
+  firstword:
+    description: "The first output string"
+    value: ${{ steps.step1.outputs.output1 }}
+ secondword:
+    description: "The second output string"
+    value: ${{ steps.step2.outputs.output2 }}
+runs:
+  using: "composite"
+  steps:
+    - id: step1
+      run: echo "output1=hello" >> $GITHUB_OUTPUT
+    - id: step2
+      run: echo "output2=world" >> $GITHUB_OUTPUT
+    - run: echo ${{ inputs.input1 }}
+    - run: echo '${{ toJSON(outputs) }}'
