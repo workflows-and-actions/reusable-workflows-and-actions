@@ -5,12 +5,13 @@ This repository contains examples of reusable workflows and composite actions. R
 
 ## Reusable workflows
 
-- Reusable workflows must reside in the ".github/workflows" directory, subdirectories are not allowed.
-- Reusable workflow as a job, not as a step, of the caller workflow and it consists of one or more jobs.
+- Must reside in the ".github/workflows" directory, subdirectories are not allowed.
+- They are called as a job, not as a step, of the caller workflow.
+- consist of one or more jobs.
 
-## Composite actions
-
+## Actions
+- We must have an action.yml file for each action.
+- For publically available actions, each repo can have only one action.
 - Having multple actions in one repo is allowed with the condition that each action resides in its own directory and it is not published for public.
--  For publically available actions, each repo can have only one action.
--  We must have an action.yml file for each action.
--  actions cannot have jobs and must be called as a step of a job.
+- For publically available actions, each repo can have only one action.
+- Actions cannot have jobs and must be called as a step of a job.
