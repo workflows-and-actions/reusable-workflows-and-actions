@@ -21,9 +21,10 @@ runs:
         echo "output1=hello" >> $GITHUB_OUTPUT
         echo "output2=world" >> $GITHUB_OUTPUT
       
-    - name: use output
+    - name: use output from previous step 
       shell: bash
       id: step2
       run: |
         echo ${{ inputs.input1 }}
         echo ${{steps.step1.output1}}
+        echo done with action
