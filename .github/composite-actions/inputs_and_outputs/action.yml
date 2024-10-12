@@ -14,7 +14,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: set outout1
+    - name: set outouts
       shell: bash
       id: step1
       run: |
@@ -26,5 +26,5 @@ runs:
       id: step2
       run: |
         echo ${{ inputs.input1 }}
-        echo ${{steps.step1.output1}}
+        echo ${{steps.step1.outputs.output1}}
         echo done with action
