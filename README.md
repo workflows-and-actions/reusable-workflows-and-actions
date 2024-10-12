@@ -1,6 +1,5 @@
-This is work in progress, may not be functional yet.
 # Introduction
-This repository contains examples of reusable workflows and composite actions. Reusable workflows and actions help avoid duplication. The repository https://github.com/workflows-and-actions/test-workflows demonstrates how to use these reusable workflows and actions. Github has excellent docs on this subject at https://docs.github.com/en/actions/sharing-automations.
+This repository contains examples of reusable workflows and composite actions. Reusable workflows and actions help avoid duplication. The repository https://github.com/workflows-and-actions/test-reusable-workflows-and-actions demonstrates how to use these reusable workflows and actions. Github has excellent docs on this subject at https://docs.github.com/en/actions/sharing-automations.
 
 # Main features
 
