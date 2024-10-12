@@ -18,12 +18,12 @@ runs:
       shell: bash
       id: step1
       run: |
-      echo "output1=hello" >> $GITHUB_OUTPUT
-      echo "output2=world" >> $GITHUB_OUTPUT
+        echo "output1=hello" >> $GITHUB_OUTPUT
+        echo "output2=world" >> $GITHUB_OUTPUT
       
     - name: use output
       shell: bash
       id: step2
       run: |
-      echo ${{ inputs.input1 }}
-      echo ${{steps.step1.output1}}
+        echo ${{ inputs.input1 }}
+        echo ${{steps.step1.output1}}
