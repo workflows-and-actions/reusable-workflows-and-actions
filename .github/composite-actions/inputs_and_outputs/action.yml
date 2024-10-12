@@ -1,4 +1,4 @@
-name: Demo of using inputs and outputs
+name: Demo of using inputs and outputs in a composite action
 description: 'use input, give output'
 inputs:
   input1:
