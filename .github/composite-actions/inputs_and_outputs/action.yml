@@ -8,7 +8,7 @@ outputs:
   firstword:
     description: "The first output string"
     value: ${{ steps.step1.outputs.output1 }}
- secondword:
+  secondword:
     description: "The second output string"
     value: ${{ steps.step2.outputs.output2 }}
 runs:
