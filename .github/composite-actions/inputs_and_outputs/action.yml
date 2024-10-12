@@ -14,9 +14,13 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - id: step1
+    - name: set outout1
+      shell: bash
+      id: step1
       run: echo "output1=hello" >> $GITHUB_OUTPUT
-    - id: step2
+    - name: set output2
+      shell: bash
+      id: step1
       run: echo "output2=world" >> $GITHUB_OUTPUT
     - run: echo ${{ inputs.input1 }}
-    - run: echo '${{ toJSON(outputs) }}'
+    - run: echo ${{steps.step1.outputs}}
