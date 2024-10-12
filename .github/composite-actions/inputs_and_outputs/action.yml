@@ -10,7 +10,7 @@ outputs:
     value: ${{ steps.step1.outputs.output1 }}
   secondword:
     description: "The second output string"
-    value: ${{ steps.step2.outputs.output2 }}
+    value: ${{ steps.step1.outputs.output2 }}
 runs:
   using: "composite"
   steps:
