@@ -5,10 +5,10 @@ runs:
   env:
     runvar: this_is_runvar
   steps:
-    env:
-      stepvar: this_is_stepvar
     - name: test env variables
       shell: bash
+      env:
+        stepvar: this_is_stepvar
       run: |
         echo $runvar $RUNVAR
         echo $stepvar $STEPVAR        
