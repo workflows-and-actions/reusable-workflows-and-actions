@@ -8,7 +8,7 @@ runs:
       env: # env context in a composite action can only be used inside a step
         stepvar: this_is_stepvar
       run: |
-        echo $stepvar $STEPVAR   
+        echo $STEPVAR   
       #  echo ${{ env.stepvar }} ${{ env.STEPVAR }}
     - name: update env variables
       shell: bash
