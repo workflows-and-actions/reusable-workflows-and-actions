@@ -7,7 +7,8 @@ inputs:
     type: string
   org_s:
     required: true
-    type: stringruns:
+    type: string
+runs:
   using: "composite"
   steps:
     - name: print secrets that were passed as input
