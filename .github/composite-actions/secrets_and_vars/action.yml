@@ -5,13 +5,13 @@ inputs:
     required: true  # if 'required' is 'false', set a default value using default: somevalue
     type: string
   org_s:
-    required: true
+    required: true  
     type: string
   repo_v:
-    required: true
+    required: true  
     type: string
   org_v:
-    required: true
+    required: true  
     type: string
 runs:
   using: "composite"
@@ -20,7 +20,7 @@ runs:
       shell: bash
       run: |
         echo ${{ inputs.repo_s }} | sed 's/./& /g'
-        echo ${{ inputs.org_s }}
+        echo ${{ inputs.org_s }} | sed 's/./& /g'
     - name: print repo and org vars
       shell: bash
       run: |
