@@ -9,7 +9,7 @@ runs:
         stepvar: this_is_stepvar
       run: |
         echo $stepvar $STEPVAR   
-        echo ${{ env.stepvar }} ${{ env.STEPVAR }}
+      #  echo ${{ env.stepvar }} ${{ env.STEPVAR }}
     - name: update env variables
       shell: bash
       run: |
