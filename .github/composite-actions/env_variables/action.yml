@@ -1,0 +1,25 @@
+name: Demo using env variables in a composite action
+description: use env variables at different levels in an action
+runs:
+  using: "composite"
+  env:
+   runvar: this_is_runvar
+  steps:
+    env:
+      stepvar: this_is_stepvar
+    - name: test env variables
+      shell: bash
+      run: |
+        echo $runvar $RUNVAR
+        echo $stepvar $STEPVAR        
+    - name: update env variables
+      shell: bash
+      run: |
+        echo "runvar=runvar_new" >> $GITHUB_ENV
+        echo "stepvar=stepvar_new" >> $GITHUB_ENV
+    - name: test updated env variables
+      shell: bash
+      run: |
+        echo $runvar $RUNVAR
+        echo $stepvar $STEPVAR           
+        echo done with action
