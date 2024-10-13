@@ -14,7 +14,7 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - name: set outouts
+    - name: set outputs
       shell: bash
       id: step1
       run: |
