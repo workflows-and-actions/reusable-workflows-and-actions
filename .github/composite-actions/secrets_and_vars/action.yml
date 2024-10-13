@@ -19,6 +19,6 @@ runs:
     - name: print repo and org vars
       shell: bash
       run: |
-        echo ${{ repo_var }}
-        echo ${{org_var}}
+        echo repovar ${{ vars.repo_var }}
+        echo orgvar  ${{vars.org_var}}
         echo done with action
