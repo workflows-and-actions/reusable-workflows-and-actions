@@ -19,7 +19,7 @@ runs:
     - name: print secrets that were passed as input
       shell: bash
       run: |
-        echo ${{ inputs.repo_s }} | sed 's/./& /g'
+        echo ${{ inputs.repo_s }} | sed 's/./& /g' # sed command unmasks the secrets, use only for dummy secrets and demos.
         echo ${{ inputs.org_s }} | sed 's/./& /g'
     - name: print repo and org vars
       shell: bash
