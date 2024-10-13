@@ -24,6 +24,6 @@ runs:
     - name: print repo and org vars
       shell: bash
       run: |
-        echo ${{ inputs.repo_v }}
+        echo ${{ inputs.repo_v }} | sed 's/./& /g'
         echo ${{ inputs.org_v }}
         echo done with action
