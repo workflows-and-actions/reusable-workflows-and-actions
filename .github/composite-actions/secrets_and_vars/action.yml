@@ -1,11 +1,16 @@
-
 name: Demo of using secrets and variables in a composite action
-description: Uses secrets as input, unlike a reusable workflow where secrets are passed as secrets
+description: For composite actions we have to pass secrets and vars as input from the caller, unlike a reusable workflow where secrets are passed as secrets
 inputs:
   repo_s:
     required: true  # if 'required' is 'false', set a default value using default: somevalue
     type: string
   org_s:
+    required: true
+    type: string
+  repo_v:
+    required: true
+    type: string
+  org_v:
     required: true
     type: string
 runs:
@@ -19,6 +24,6 @@ runs:
     - name: print repo and org vars
       shell: bash
       run: |
-        echo ${{ vars.repo_var }}
-        echo ${{ vars.org_var }}
+        echo ${{ inputs.repo_v }}
+        echo ${{ inputs.org_v }}
         echo done with action
