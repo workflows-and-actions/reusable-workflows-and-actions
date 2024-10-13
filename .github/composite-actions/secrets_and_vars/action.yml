@@ -7,18 +7,17 @@ inputs:
     type: string
   org_s:
     required: true
-    type: string
-runs:
+    type: stringruns:
   using: "composite"
   steps:
     - name: print secrets that were passed as input
       shell: bash
       run: |
         echo ${{ inputs.repo_s }}
-        echo ${{inputs.org_s}}
+        echo ${{ inputs.org_s }}
     - name: print repo and org vars
       shell: bash
       run: |
-        echo repovar ${{ vars.repo_var }}
-        echo orgvar  ${{vars.org_var}}
+        echo ${{ vars.repo_var }}
+        echo ${{ vars.org_var }}
         echo done with action
