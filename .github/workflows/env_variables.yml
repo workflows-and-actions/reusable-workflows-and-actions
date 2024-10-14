@@ -24,7 +24,6 @@ jobs:
           echo "stepvar=stepvar_new" >> $GITHUB_ENV
           echo "globalvar=globalvar_new" >> $GITHUB_ENV          
       - name: test updated env variables
-        shell: bash
         if: ${{ env.stepvar == 'stepvar_new' }} # we must accesss env vars using env context when outside a run
        # if: $stepvar == stepvar_new #     this will not work
        # if: ${{$stepvar == stepvar_new}} #     this will not work either
@@ -39,7 +38,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: test env variables
-        shell: bash
         run: |
           # the following are not available acrosss jobs
           echo $stepvar
