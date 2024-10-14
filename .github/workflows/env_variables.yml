@@ -13,7 +13,6 @@ jobs:
       jobvar: this_is_jobvar
     steps:
       - name: test env variables
-        shell: bash
         env: 
           stepvar: this_is_stepvar
         run: |
@@ -21,7 +20,6 @@ jobs:
           echo $stepvar  
           echo ${{ env.stepvar }}
       - name: update env variables
-        shell: bash
         run: |
           echo "stepvar=stepvar_new" >> $GITHUB_ENV
           echo "globalvar=globalvar_new" >> $GITHUB_ENV          
