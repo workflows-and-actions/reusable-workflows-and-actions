@@ -8,7 +8,8 @@ runs:
       env: # env context in a composite action can only be used inside a step
         stepvar: this_is_stepvar
       run: |
-        echo $stepvar   
+       # inside a run, access env vars with or without env context
+        echo $stepvar  
         echo ${{ env.stepvar }}
     - name: update env variables
       shell: bash
@@ -16,6 +17,8 @@ runs:
         echo "stepvar=stepvar_new" >> $GITHUB_ENV
     - name: test updated env variables
       shell: bash
+      if: ${{ env.stepvar == 'stepvar_new' }} # we must accesss env vars using env context when outside a run
+     #  if: $stepvar == stepvar_new #     this will not work 
       run: |
         echo $stepvar
         echo ${{ env.stepvar }}   
