@@ -21,7 +21,7 @@ jobs:
       - name: update env variables
         shell: bash
         run: |
-          echo "globalvar=globalvar_new" >> $GITHUB_ENV
+          echo "stepvar=stepvar_new" >> $GITHUB_ENV
           echo "globalvar=globalvar_new" >> $GITHUB_ENV          
       - name: test updated env variables
         shell: bash
@@ -40,8 +40,12 @@ jobs:
       - name: test env variables
         shell: bash
         run: |
+          # the following are not available acrosss jobs
           echo $stepvar
+          echo ${{env.stepvar}} 
           echo $jobvar
+          echo ${{env.jobvar}} 
+          # this is available
           echo $globalvar
           echo ${{env.globalvar}}
           echo done with reusable workflow       
