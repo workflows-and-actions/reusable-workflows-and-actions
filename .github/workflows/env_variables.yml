@@ -1,0 +1,44 @@
+name: Demo using env variables in a reusable workflow
+on:
+  workflow_call
+env:
+  globalvar: global_value
+jobs:
+  job1:
+    name: j1 test env vars inside a job
+    runs-on: ubuntu-latest
+    env: 
+      jobvar: this_is_jobvar
+    steps:
+      - name: test env variables
+        shell: bash
+        env: 
+          stepvar: this_is_stepvar
+        run: |
+         # inside a run, access env vars with or without env context
+          echo $stepvar  
+          echo ${{ env.stepvar }}
+      - name: update env variables
+        shell: bash
+        run: |
+          echo "globalvar=globalvar_new" >> $GITHUB_ENV
+      - name: test updated env variables
+        shell: bash
+        if: ${{ env.stepvar == 'stepvar_new' }} # we must accesss env vars using env context when outside a run
+       # if: $stepvar == stepvar_new #     this will not work
+       # if: ${{$stepvar == stepvar_new}} #     this will not work either
+        run: |
+          echo $stepvar
+          echo ${{ env.stepvar }}   
+  job2:
+    name: j2 test env vars across a job
+    runs-on: ubuntu-latest
+    steps:
+      - name: test env variables
+        shell: bash
+        run: |
+          echo $stepvar
+          echo $jobvar
+          echo $globalvar
+          echo ${{env.globalvar}}
+          echo done with reusable workflow       
