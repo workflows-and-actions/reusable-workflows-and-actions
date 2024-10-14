@@ -1,10 +1,11 @@
 name: Demo using env variables in a composite action
 description: use env variables at different levels in an action
+runs-on: ubuntu-latest
 runs:
   using: "composite"
   steps:
     - name: test env variables
-      shell: bash
+      # shell: bash # we have to set shell explicitly in a composite action
       env: # env context in a composite action can only be used inside a step
         stepvar: this_is_stepvar
       run: |
@@ -16,7 +17,7 @@ runs:
       run: |
         echo "stepvar=stepvar_new" >> $GITHUB_ENV
     - name: test updated env variables
-     # shell: bash
+      shell: bash
       if: ${{ env.stepvar == 'stepvar_new' }} # we must accesss env vars using env context when outside a run
      # if: $stepvar == stepvar_new #     this will not work
      # if: ${{$stepvar == stepvar_new}} #     this will not work either
