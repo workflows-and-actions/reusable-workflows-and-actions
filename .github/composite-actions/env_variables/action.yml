@@ -1,6 +1,5 @@
 name: Demo using env variables in a composite action
 description: use env variables at different levels in an action
-runs-on: ubuntu-latest
 runs:
   using: "composite"
   steps:
