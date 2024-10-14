@@ -29,12 +29,13 @@ jobs:
        # if: $stepvar == stepvar_new #     this will not work
        # if: ${{$stepvar == stepvar_new}} #     this will not work either
         run: |
+          # inside a run we can access vars with or without env context
           echo $stepvar
           echo ${{ env.stepvar }}
           echo $globalvar
           echo ${{env.globalvar}}    
   job2:
-    name: j2 test env vars across a job
+    name: j2 show env vars behaviour across jobs
     runs-on: ubuntu-latest
     steps:
       - name: test env variables
@@ -45,7 +46,7 @@ jobs:
           echo ${{env.stepvar}} 
           echo $jobvar
           echo ${{env.jobvar}} 
-          # this is available
+          # global variable is available but the update done in another job will not affect it
           echo $globalvar
           echo ${{env.globalvar}}
           echo done with reusable workflow       
