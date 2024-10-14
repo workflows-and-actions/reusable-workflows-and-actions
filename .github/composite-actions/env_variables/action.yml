@@ -5,7 +5,7 @@ runs:
   using: "composite"
   steps:
     - name: test env variables
-      # shell: bash # we have to set shell explicitly in a composite action
+      shell: bash # we have to set shell explicitly in a composite action
       env: # env context in a composite action can only be used inside a step
         stepvar: this_is_stepvar
       run: |
