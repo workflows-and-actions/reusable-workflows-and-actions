@@ -2,6 +2,8 @@ name: Demo using env variables in a reusable workflow
 on:
   workflow_call
 env:
+  # vars defined here are availble to all jobs, however, value updates will be available only 
+  # within the job where they are updated
   globalvar: global_value
 jobs:
   job1:
