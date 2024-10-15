@@ -15,5 +15,5 @@ runs:
       run: |
         echo ${{inputs.script_file}}
         echo ${{inputs.nested_action_file}} 
-        ls -al workflows-and-actions/reusable-workflows-and-actions/.github
+        echo -al ${{ github.action_path }}
         echo done with action
