@@ -8,7 +8,7 @@ jobs:
     environment: 
       prod
     steps:
-      - name: test env variables
+      - name: test repo environment variables
         run: |
           echo ${{ vars.ENV_PROD_VAR }}
           echo ${{vars.env_prod_var}}
