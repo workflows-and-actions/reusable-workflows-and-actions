@@ -1,7 +1,9 @@
 name: Demo using repo environment in a composite action
 description: use environment defined in the repository 
 inputs:
-  repo_environment_var
+  repo_environment_var:
+    required: true  # if 'required' is 'false', set a default value using default: somevalue
+    type: string
 runs:
   using: "composite"
   steps:
