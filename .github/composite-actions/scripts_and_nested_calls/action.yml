@@ -1,5 +1,5 @@
 name: Demo showing how to call a nested action and a script
-description: use environment defined in the repository 
+description: call a bash script and an action 
 inputs:
   nested_action_file:
     required: true  # if 'required' is 'false', set a default value using default: somevalue
