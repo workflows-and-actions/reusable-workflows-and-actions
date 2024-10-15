@@ -1,0 +1,17 @@
+name: Demo showing how to call a nested action and a script
+description: use environment defined in the repository 
+inputs:
+  nested_action_file:
+    required: true  # if 'required' is 'false', set a default value using default: somevalue
+    type: string
+  script_file:
+    required: true 
+    type: string
+runs:
+  using: "composite"
+  steps:
+    - name: test call a script
+      shell: bash # we have to set shell explicitly in a composite action
+      run: |
+        ls -al 
+        echo done with action
