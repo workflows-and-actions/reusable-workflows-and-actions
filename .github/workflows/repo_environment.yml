@@ -1,13 +1,9 @@
-name: Demo using env variables in a reusable workflow
+name: Demo using repo environment in a reusable workflow
 on:
   workflow_call
-env:
-  # vars defined here are availble to all jobs, however, value updates will be available only 
-  # within the job where they are updated
-  globalvar: global_value
 jobs:
   job1:
-    name: j1 test env vars inside a job
+    name: j1 test repo environment inside a job
     runs-on: ubuntu-latest
     environment: 
       prod
