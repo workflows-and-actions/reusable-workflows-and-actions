@@ -1,0 +1,22 @@
+name: Demo showing how to call a nested workflow and a bash script
+on:
+  workflow_call:
+    inputs:
+      nested_workflow_file:
+        required: true  # if 'required' is 'false', set a default value using default: somevalue
+        type: string
+      script_file:
+        required: true 
+        type: string
+jobs:
+  job1:
+    name: j1 
+    runs-on: ubuntu-latest
+    environment: 
+      prod
+    steps:
+      - name: test 
+        run: |
+          echo ${{inputs.script_file}}
+          echo ${{inputs.nested_workflow_file}}          
+          echo done with reusable workflow   
