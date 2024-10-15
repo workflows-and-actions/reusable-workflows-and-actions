@@ -1,1 +1,17 @@
-
+name: Demo using repo environment in a composite action
+description: use environment defined in the repository 
+runs:
+  using: "composite"
+  environment:
+    prod
+  steps:
+    - name: test env variables
+      shell: bash # we have to set shell explicitly in a composite action
+      run: |
+        echo $stepvar
+        echo ${{ vars.ENV_PROD_VAR }}
+        echo ${{vars.env_prod_var}}
+        echo ${{ vars.ENV_PROD_VAR }}
+        echo ${{ vars.ENV_DEV_VAR }}
+        echo ${{ vars.ENV_STAGE_VAR }}   
+        echo done with action
