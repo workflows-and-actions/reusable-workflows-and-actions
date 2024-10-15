@@ -16,4 +16,5 @@ runs:
         echo ${{inputs.script_file}}
         echo ${{inputs.nested_action_file}} 
         echo -al ${{ github.action_path }}
+        echo -al ${{ GITHUB_WORKSPACE }}
         echo done with action
