@@ -1,0 +1,22 @@
+name: Demo using env variables in a reusable workflow
+on:
+  workflow_call
+env:
+  # vars defined here are availble to all jobs, however, value updates will be available only 
+  # within the job where they are updated
+  globalvar: global_value
+jobs:
+  job1:
+    name: j1 test env vars inside a job
+    runs-on: ubuntu-latest
+    environment: 
+      prod
+    steps:
+      - name: test env variables
+        run: |
+          echo ${{ vars.ENV_PROD_VAR }}
+          echo ${{vars.env_prod_var}}
+          echo ${{ vars.ENV_PROD_VAR }}
+          echo ${{ vars.ENV_DEV_VAR }}
+          echo ${{ vars.ENV_STAGE_VAR }}
+          echo done with reusable workflow       
