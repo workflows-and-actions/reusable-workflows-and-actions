@@ -27,5 +27,5 @@ jobs:
       #    ${{github.action_path}}/../../scripts/${{inputs.script_file}}
       #    echo done with reusable workflow
         run: |
-          echo $GITHUB_CONTEXT
+          echo "$GITHUB_CONTEXT"
           
