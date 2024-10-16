@@ -10,11 +10,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: call a nested action
-      shell: bash
-      uses: ${{github.action_path}}/../${{ inputs.nested_action_path }}
-      with:
-          an_input: i am the nested_action
     - name: run a script
       shell: bash
       # How to scripts
