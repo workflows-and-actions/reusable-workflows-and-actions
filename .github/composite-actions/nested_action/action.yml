@@ -1,4 +1,4 @@
-name: A nested action called from another action
+name: A nested action called from a reusable workflow
 description: call a bash script and an action 
 inputs:
   an_input:
@@ -10,5 +10,5 @@ runs:
     - name: run a command
       shell: bash
       run: |
-        echo inputs.an_input
+        echo ${{ inputs.an_input }}
         echo nested action done
