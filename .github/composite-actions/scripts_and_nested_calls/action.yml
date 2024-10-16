@@ -21,7 +21,6 @@ runs:
       run: |
         . ${{github.action_path}}/../../scripts/hello.sh 
         source ${{github.action_path}}/../../scripts/hello.sh
-      # following requires the file to be executable
         chmod +x ${{github.action_path}}/../../scripts/hello.sh
         ${{github.action_path}}/../../scripts/hello.sh
 
