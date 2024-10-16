@@ -19,6 +19,7 @@ runs:
     - name: test call a script
       shell: bash # we have to set shell explicitly in a composite action 
       run: |
+        ls -al ${{github.action_path}}/../../scripts
         chmod +x $scriptPath
         ./$scriptPath
         echo ${{ env.scriptPath }}
