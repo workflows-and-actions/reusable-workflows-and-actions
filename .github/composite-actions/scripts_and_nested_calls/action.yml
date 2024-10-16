@@ -20,7 +20,7 @@ runs:
       shell: bash # we have to set shell explicitly in a composite action 
       run: |
         chmod +x $scriptPath
-        echo ./$scriptPath
+        ./$scriptPath
         echo ${{ env.scriptPath }}
         echo ${{inputs.script_file}}
         echo ${{inputs.nested_action_file}} 
