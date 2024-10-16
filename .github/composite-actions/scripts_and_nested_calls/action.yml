@@ -10,13 +10,17 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Dump GitHub context
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
     - name: test call a script
       shell: bash # we have to set shell explicitly in a composite action
       run: |
         echo ${{inputs.script_file}}
         echo ${{inputs.nested_action_file}} 
         # echo -al ${{ github.action_path }}
-        echo -al $GITHUB_WORKSPACE
+        echo -al $GITHUB_WORKSPACE 
         # echo -al ${{ github.action_path/../../ }}
         echo -al ${{ github }}
         echo done with action
