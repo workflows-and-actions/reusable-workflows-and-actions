@@ -6,18 +6,16 @@ inputs:
     type: string
   script_file:
     required: true 
-    type: string
-env:
-  GITHUB_CONTEXT: ${{ toJson(github) }}
-  scriptPath: ${{github.action_path}}/../../         
+    type: string       
 runs:
   using: "composite"
   steps:
-    - name: Dump GitHub context
+    - name: set env vars
       shell: bash
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo $GITHUB_CONTEXT
+        scriptPath: ${{github.action_path }}
+      run: echo $scriptPath
     - name: test call a script
       shell: bash # we have to set shell explicitly in a composite action 
       run: |
