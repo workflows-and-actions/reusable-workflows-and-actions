@@ -19,7 +19,8 @@ runs:
       # The third command (chmod ...) is required to run the fourth command which runs the  script in a new shell and any environmental changes made inside the 
       # script are not propagated to the current shell.
       run: |
-        . ${{github.action_path}}/../../scripts/hello.sh 
+        echo myvar=${{github.action_path}}/../../scripts/hello.sh 
+        . $myvar 
         source ${{github.action_path}}/../../scripts/hello.sh
         chmod +x ${{github.action_path}}/../../scripts/hello.sh
         ${{github.action_path}}/../../scripts/hello.sh
