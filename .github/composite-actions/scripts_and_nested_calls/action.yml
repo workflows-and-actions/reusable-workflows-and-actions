@@ -1,9 +1,6 @@
-name: Demo showing how to call a nested action and a script
+name: Demo showing how to call  a script
 description: call a bash script and an action 
 inputs:
-  nested_action_path:
-    required: true  # if 'required' is 'false', set a default value using default: somevalue
-    type: string
   script_file:
     required: true 
     type: string       
@@ -21,5 +18,6 @@ runs:
         source ${{github.action_path}}/../../scripts/${{inputs.script_file}}
         chmod +x ${{github.action_path}}/../../scripts/${{inputs.script_file}}
         ${{github.action_path}}/../../scripts/${{inputs.script_file}}
+        echo action done
 
 
