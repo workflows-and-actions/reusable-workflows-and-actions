@@ -13,9 +13,12 @@ runs:
     - name: run a script
       shell: bash
       # GITHUB_CONTEXT: ${{ toJson(github) }}
+      # How to scripts
+      # The first two commands are anonymous, they run the script in the current shell, changes in environment sustain (e.g changing directory or defining env vars),
+      # and the script does not need to be executable in the first two commands.
+      # The third command (chmod ...) is required to run the fourth command which runs the  script in a new shell and any environmental changes made inside the 
+      # script are not propagated to the current shell.
       run: |
-      # the following two are anonymous, they run the script in the current shell and changes in environment sustain (chinging directory or defining env vars)
-      # the script does not need to be executable in both of the commands below
         . ${{github.action_path}}/../../scripts/hello.sh 
         source ${{github.action_path}}/../../scripts/hello.sh
       # following requires the file to be executable
