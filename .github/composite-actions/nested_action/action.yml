@@ -1,0 +1,14 @@
+name: A nested action called from another action
+description: call a bash script and an action 
+inputs:
+  an_input:
+    required: true  # if 'required' is 'false', set a default value using default: somevalue
+    type: string      
+runs:
+  using: "composite"
+  steps:
+    - name: run a command
+      shell: bash
+      run: |
+        echo inputs.an_input
+        echo nested action done
