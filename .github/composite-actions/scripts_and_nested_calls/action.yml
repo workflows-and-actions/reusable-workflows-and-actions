@@ -1,7 +1,7 @@
 name: Demo showing how to call a nested action and a script
 description: call a bash script and an action 
 inputs:
-  nested_action_file:
+  nested_action_path:
     required: true  # if 'required' is 'false', set a default value using default: somevalue
     type: string
   script_file:
@@ -10,19 +10,21 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: call a nested action
+      shell: bash
+      uses: ${{github.action_path}}/../${{ inputs.nested_action_path }}
+      with:
+          an_input: i am the nested_action
     - name: run a script
       shell: bash
-      # GITHUB_CONTEXT: ${{ toJson(github) }}
       # How to scripts
       # The first two commands are anonymous, they run the script in the current shell, changes in environment sustain (e.g changing directory or defining env vars),
       # and the script does not need to be executable in the first two commands.
       # The third command (chmod ...) is required to run the fourth command which runs the  script in a new shell and any environmental changes made inside the 
       # script are not propagated to the current shell.
       run: |
-        echo "myvar=${{github.action_path}}/../../scripts/hello.sh" >> GITHUB_ENV 
-        . $myvar 
-        source ${{github.action_path}}/../../scripts/hello.sh
-        chmod +x ${{github.action_path}}/../../scripts/hello.sh
-        ${{github.action_path}}/../../scripts/hello.sh
+        source ${{github.action_path}}/../../scripts/${{script_file}}
+        chmod +x ${{github.action_path}}/../../scripts/${{script_file}}
+        ${{github.action_path}}/../../scripts/${{script_file}}
 
 
