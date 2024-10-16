@@ -15,7 +15,7 @@ runs:
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
         scriptPath: ${{github.action_path }}
-      run: echo $scriptPath
+      run: echo "scriptPath=$scriptPath" >> $GITHUB_ENV
     - name: test call a script
       shell: bash # we have to set shell explicitly in a composite action 
       run: |
