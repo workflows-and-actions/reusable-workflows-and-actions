@@ -19,7 +19,7 @@ runs:
     - name: test call a script
       shell: bash # we have to set shell explicitly in a composite action 
       run: |
-        echo $scriptPath
+        ls -al $scriptPath
         echo ${{ env.scriptPath }}
         echo ${{inputs.script_file}}
         echo ${{inputs.nested_action_file}} 
