@@ -17,8 +17,8 @@ runs:
         scriptPath: ${{github.action_path}}/../../scripts/${{inputs.script_file}}
       run: |
         . ${{github.action_path}}/../../scripts/hello.sh 
-        .${{github.action_path}}/../../scripts/hello.sh 
         source ${{github.action_path}}/../../scripts/hello.sh
+        ${{github.action_path}}/../../scripts/hello.sh
     # "scriptPath2=$scriptPath" >> GITHUB_ENV
     #- name: test call a script
     #  shell: bash # we have to set shell explicitly in a composite action 
