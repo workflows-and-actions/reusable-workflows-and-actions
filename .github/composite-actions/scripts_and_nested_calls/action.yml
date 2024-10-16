@@ -7,6 +7,9 @@ inputs:
   script_file:
     required: true 
     type: string
+env:
+  GITHUB_CONTEXT: ${{ toJson(github) }}
+  scriptPath: ${{github.action_path}}/../../         
 runs:
   using: "composite"
   steps:
@@ -14,12 +17,12 @@ runs:
       shell: bash
       env:
         GITHUB_CONTEXT: ${{ toJson(github) }}
-        scriptPath: ${{github.action_path}}/../../
       run: echo $GITHUB_CONTEXT
     - name: test call a script
-      shell: bash # we have to set shell explicitly in a composite action
+      shell: bash # we have to set shell explicitly in a composite action 
       run: |
         echo $scriptPath
+        echo ${{ env.scriptPath }}
         echo ${{inputs.script_file}}
         echo ${{inputs.nested_action_file}} 
         echo $GITHUB_WORKSPACE 
