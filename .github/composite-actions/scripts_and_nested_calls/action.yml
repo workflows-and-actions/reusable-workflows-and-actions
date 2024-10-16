@@ -10,34 +10,16 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: set env vars
+    - name: run a script
       shell: bash
-      env:
       # GITHUB_CONTEXT: ${{ toJson(github) }}
-        scriptPath: ${{github.action_path}}/../../scripts/${{inputs.script_file}}
       run: |
+      # the following two are anonymous, they run the script in the current shell and changes in environment sustain (chinging directory or defining env vars)
+      # the script does not need to be executable in both of the commands below
         . ${{github.action_path}}/../../scripts/hello.sh 
         source ${{github.action_path}}/../../scripts/hello.sh
+      # following requires the file to be executable
+        chmod +x ${{github.action_path}}/../../scripts/hello.sh
         ${{github.action_path}}/../../scripts/hello.sh
-    # "scriptPath2=$scriptPath" >> GITHUB_ENV
-    #- name: test call a script
-    #  shell: bash # we have to set shell explicitly in a composite action 
-    #  run: | 
-    #    echo ${{ env.scriptPath }}
-    #    echo ${{inputs.script_file}}
-    #    echo ${{inputs.nested_action_file}} 
-    #    echo $GITHUB_WORKSPACE 
-    #    echo $GITHUB_ACTION_PATH
-    #    echo $GITHUB_ACTION_REPOSITORY
-    #    echo ${{ github.action_path }}
-    #    echo ${{ github.action_repository }}
-              
-# chmod +x $scriptPath2    #./$scriptPath2
 
-# echo -al ${{ github }} 
-#  echo done with action
-# echo -al ${{ github.action_path }}
-# echo -al $GITHUB_WORKSPACE 
-# echo -al ${{ github.action_path/../../ }}
-#chmod +x $scriptPath2    #./$scriptPath2
 
