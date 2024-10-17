@@ -13,5 +13,4 @@ This repository contains examples of reusable workflows and composite actions. R
 - We must have an action.yml file for each action.
 - For publically available actions, each repo can have only one action.
 - Having multple actions in one repo is allowed with the condition that each action resides in its own directory and it is not published for public.
-- For publically available actions, each repo can have only one action.
 - Actions cannot have jobs and must be called as a step of a job.
