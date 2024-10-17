@@ -40,4 +40,10 @@ runs:
       env:
         MATRIX_CONTEXT: ${{ toJson(matrix) }}
       run: echo "$MATRIX_CONTEXT"
+    - name: show runner dir contents
+      shell: bash
+      run: |
+        ls -al /home/runner/work
+        ls -al ${{runner.temp}}
+        ls -al ${{runner.work_space}}
       
