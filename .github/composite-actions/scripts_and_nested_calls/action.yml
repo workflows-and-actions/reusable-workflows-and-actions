@@ -1,4 +1,4 @@
-name: Demo showing how to call  a script
+name: Demo showing how to call  a script from an action
 description: call a bash script and an action 
 inputs:
   script_file:
@@ -9,17 +9,15 @@ runs:
   steps:
     - name: run a script
       shell: bash
-      # How to scripts
+      # How to use scripts.
       # The first two commands are anonymous, they run the script in the current shell, changes in environment sustain (e.g changing directory or defining env vars),
       # and the script does not need to be executable in the first two commands.
       # The third command (chmod ...) is required to run the fourth command which runs the  script in a new shell and any environmental changes made inside the 
       # script are not propagated to the current shell.
       run: |
-        pwd
-        ls -al
-     #   source ${{inputs.script_file}}
-     #   chmod +x ${{github.action_path}}/../../scripts/${{inputs.script_file}}
-     #   ${{github.action_path}}/../../scripts/${{inputs.script_file}}
-     #   echo action done
+        source ${{github.action_path}}/../../scripts/${{inputs.script_file}}
+        chmod +x ${{github.action_path}}/../../scripts/${{inputs.script_file}}
+        ${{github.action_path}}/../../scripts/${{inputs.script_file}}
+        echo action done
 
 
