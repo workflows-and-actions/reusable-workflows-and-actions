@@ -1,5 +1,6 @@
 name: explore different contexts as they appear in a reusable workflow
-on: push
+on:
+  workflow_call
 jobs:
   dump_contexts:
     runs-on: ubuntu-latest
