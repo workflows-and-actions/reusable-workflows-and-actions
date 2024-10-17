@@ -25,8 +25,6 @@ jobs:
       #    echo done with reusable workflow
         run: |
           pwd
-          ls -al
-          ls -al ../
-          ls -al ../../
+          echo ${{github.workflow}}
           echo hello
           
