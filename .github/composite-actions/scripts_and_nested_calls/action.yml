@@ -1,7 +1,8 @@
-name: Demo showing how to call  a script from an action
-description: call a bash script and an action 
+name: demo call a script in the same repo as this action, with script path given relative to .github directory
+description: Showing how to call  a script from an action that was called by a workflow that may or may not be in
+# the same repo as this action
 inputs:
-  script_file:
+  script_path:
     required: true 
     type: string       
 runs:
@@ -15,9 +16,9 @@ runs:
       # The third command (chmod ...) is required to run the fourth command which runs the  script in a new shell and any environmental changes made inside the 
       # script are not propagated to the current shell.
       run: |
-        source ${{github.action_path}}/../../scripts/${{inputs.script_file}}
-        chmod +x ${{github.action_path}}/../../scripts/${{inputs.script_file}}
-        ${{github.action_path}}/../../scripts/${{inputs.script_file}}
+        source ${{github.action_path}}/../../${{inputs.script_path}}
+        chmod +x ${{github.action_path}}/../../${{inputs.script_path}}
+        ${{github.action_path}}/../../${{inputs.script_path}}
         echo action done
 
 
