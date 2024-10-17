@@ -37,6 +37,6 @@ jobs:
         run: echo "$MATRIX_CONTEXT"
       - name: show runner dir contents
         run: |
-          ls -a[ /home/runner/work
+          ls -al /home/runner/work
           ls -al ${{runner.temp}}
           ls -al ${{runner.work_space}}
