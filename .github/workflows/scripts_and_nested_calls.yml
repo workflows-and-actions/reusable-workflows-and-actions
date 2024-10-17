@@ -1,30 +1,19 @@
-name: Demo showing how to call a bash script in directory.github/scripts of this repo
+name: Demo showing how to call a bash script given in the .github directory of the called action
+# We have to use an action that resides in the same repo as the called script for this task, thats the simplest way to do it
 on:
   workflow_call:
     inputs:
-      nested_workflow_file:
-        required: true  # if 'required' is 'false', set a default value using default: somevalue
-        type: string
-      script_file:
+      script_path:
         required: true 
         type: string
 jobs:
   job1:
-    name: j1 
+    name: j1 call an action 
     runs-on: ubuntu-latest
     steps:
-      - name: test 
-      # How to scripts
-      # The first two commands are anonymous, they run the script in the current shell, changes in environment sustain (e.g changing directory or defining env vars),
-      # and the script does not need to be executable in the first two commands.
-      # The third command (chmod ...) is required to run the fourth command which runs the  script in a new shell and any environmental changes made inside the 
-      # script are not propagated to the current shell.
-      #    source ${{github.action_path}}/../../scripts/${{inputs.script_file}}
-      #    chmod +x ${{github.action_path}}/../../scripts/${{inputs.script_file}}
-      #    ${{github.action_path}}/../../scripts/${{inputs.script_file}}
-      #    echo done with reusable workflow
-        run: |
-          pwd
-          echo ${{github.workflow}}
-          echo hello
+      - name: call the action 
+        uses: workflows-and-actions/reusable-workflows-and-actions/.github/composite-actions/scripts_and_nested_calls@main
+        with:
+          script_path: ${{ inputs.script_path }} # relative to .github directory of the called reusable workflow/action
+   
           
