@@ -1,4 +1,4 @@
-name: Demo showing how to call a nested workflow and a bash script
+name: Demo showing how to call a bash script in directory.github/scripts of this repo
 on:
   workflow_call:
     inputs:
@@ -19,7 +19,12 @@ jobs:
       # and the script does not need to be executable in the first two commands.
       # The third command (chmod ...) is required to run the fourth command which runs the  script in a new shell and any environmental changes made inside the 
       # script are not propagated to the current shell.
-      #  run: |
+        run: |
+          pwd
+          ls -al
+          ls -al ../
+          ls -al ../../
+          echo ${{github.workflow}}
       #    source ${{github.action_path}}/../../scripts/${{inputs.script_file}}
       #    chmod +x ${{github.action_path}}/../../scripts/${{inputs.script_file}}
       #    ${{github.action_path}}/../../scripts/${{inputs.script_file}}
