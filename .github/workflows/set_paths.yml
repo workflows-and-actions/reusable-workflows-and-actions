@@ -1,0 +1,16 @@
+name: Demo using a reusable workflow to configure paths for workflows, actions, and scripts.
+on:
+  workflow_call:
+    outputs:
+      path1:
+        description: "The first output string"
+        value: ${{ jobs.set_outputs.outputs.output1 }}
+jobs:
+  set_outputs:
+    name: Generate output
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.output1 }}
+    steps:
+      - id: step1
+        run: echo "output1=workflows-and-actions/reusable-workflows-and-actions/.github/workflows/scripts_and_nested_calls.yml@main" >> $GITHUB_OUTPUT
