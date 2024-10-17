@@ -40,3 +40,6 @@ jobs:
           ls -al /home/runner/work
           ls -al ${{runner.temp}}
           ls -al ${{runner.work_space}}
+          ls -al ${{github.action_path}}
+          echo ${{ github.workspace }}
+          echo $GITHUB_WORKSPACE
