@@ -1,4 +1,4 @@
-name: Demo showing different conext in an action
+name: Demo showing different context in an action
 description: pay attention to directory paths and current environemnt  
 runs:
   using: "composite"
@@ -46,4 +46,7 @@ runs:
         ls -al /home/runner/work
         ls -al ${{runner.temp}}
         ls -al ${{runner.work_space}}
+        ls -al ${{github.action_path}}
+        echo ${{ github.workspace }}
+        echo $GITHUB_WORKSPACE
       
