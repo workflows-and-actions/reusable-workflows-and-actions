@@ -8,7 +8,7 @@ on:
         type: string
 jobs:
   job1:
-    name: j1 call an action 
+    name: j1 call an action from a reusable workflow
     runs-on: ubuntu-latest
     steps:
       - name: call the action 
