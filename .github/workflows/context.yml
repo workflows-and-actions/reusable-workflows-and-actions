@@ -1,3 +1,7 @@
+# pay attention to github_action_path, it gives a path to the 
+# running action, however, the same or its equivalent is not available
+# in a reusable workflow.
+
 name: explore different contexts as they appear in a reusable workflow
 on:
   workflow_call
@@ -41,5 +45,5 @@ jobs:
           ls -al ${{runner.temp}}
           ls -al ${{runner.work_space}}
           ls -al ${{github.action_path}}
-          echo ${{ github.workspace }}
-          echo $GITHUB_WORKSPACE
+          ls -al ${{ github.workspace }}
+          ls -al $GITHUB_WORKSPACE
