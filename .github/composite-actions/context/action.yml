@@ -1,0 +1,43 @@
+name: Demo showing different conext in an action
+description: pay attention to directory paths and current environemnt  
+runs:
+  using: "composite"
+  steps:
+    - name: check wehere we are
+      shell: bash
+      run: |
+        pwd
+        ls -al 
+        ls -al ../
+        ls -al ../../
+    - name: github
+      shell: bash
+      env:
+        GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+    - name: job
+      shell: bash
+      env:
+        JOB_CONTEXT: ${{ toJson(job) }}
+      run: echo "$JOB_CONTEXT"
+    - name: steps
+      shell: bash
+      env:
+        STEPS_CONTEXT: ${{ toJson(steps) }}
+      run: echo "$STEPS_CONTEXT"
+    - name: runner
+      shell: bash
+      env:
+        RUNNER_CONTEXT: ${{ toJson(runner) }}
+      run: echo "$RUNNER_CONTEXT"
+    - name: strategy
+      shell: bash
+      env:
+        STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+      run: echo "$STRATEGY_CONTEXT"
+    - name: matrix
+      shell: bash
+      env:
+        MATRIX_CONTEXT: ${{ toJson(matrix) }}
+      run: echo "$MATRIX_CONTEXT"
+      
