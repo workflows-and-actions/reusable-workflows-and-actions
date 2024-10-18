@@ -1,0 +1,26 @@
+name: Demo showing how to reand and write files attached to caller workflow repo
+on:
+  workflow_call:
+    inputs:
+      file_path:
+        required: true 
+        type: string
+jobs:
+  job1:
+    name: read a json file
+    runs-on: ubuntu-latest
+    steps: 
+      - name: call the action to read a json file
+        uses: actions/github-script@v6
+        id: read_json
+        with:
+          result-encoding: string
+          script: |
+            try {
+              const fs = require('fs')
+              const jsonString = fs.readFileSync('./.github/${{file_path}}')
+              var apps = JSON.parse(jsonString)
+            } catch(err) {
+              core.error("Error while reading or parsing the JSON")
+              core.setFailed(err)
+            }
