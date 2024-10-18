@@ -24,7 +24,7 @@ jobs:
         script: |
           try {
             const fs = require('fs')
-            const jsonString = fs.readFileSync('${{ github.workspace }}/file_path')
+            const jsonString = fs.readFileSync('${{ github.workspace }}/${{inputs.file_path}}')
             var data = JSON.parse(jsonString)
             console.log(data)
           } catch(err) {
