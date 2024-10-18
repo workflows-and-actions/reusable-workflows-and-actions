@@ -15,7 +15,7 @@ jobs:
       with:
         sparse-checkout: |
           ${{inputs.file_path}}
-          sparse-checkout-cone-mode: false
+      # sparse-checkout-cone-mode: false
     - name: call the action to read a json file
       uses: actions/github-script@v7
       id: read_json
@@ -27,7 +27,7 @@ jobs:
             const jsonString = fs.readFileSync('${{ github.workspace }}/${{inputs.file_path}}')
             var data = JSON.parse(jsonString)
             console.log(data)
-            console.log(data.glossary.GlossDiv.GlossList.GlossEntry.GlossDef.GlossSeeAlo)
+            console.log(data.glossary.GlossDiv.GlossList.GlossEntry.GlossDef.GlossSeeAlso)
           } catch(err) {
             core.error("Error while reading or parsing the JSON")
             core.setFailed(err)
