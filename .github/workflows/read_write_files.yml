@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: call the action to read a json file
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         id: read_json
         with:
           result-encoding: string
