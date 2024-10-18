@@ -9,20 +9,26 @@ jobs:
   job1:
     name: read a json file
     runs-on: ubuntu-latest
-    steps: 
-      - name: call the action to read a json file
-        uses: actions/github-script@v7
-        id: read_json
-        with:
-          result-encoding: string
-          script: |
-            try {
-              const fs = require('fs')
-              const jsonString = fs.readFileSync('${{ github.workspace }}/.github/test-files/f1.json')
-              var apps = JSON.parse(jsonString)
-              console.log(jsonString)
-              console.log(apps)
-            } catch(err) {
-              core.error("Error while reading or parsing the JSON")
-              core.setFailed(err)
-            }
+    steps:
+    - name: checkout file
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          .github/test-files/f1.json
+        # sparse-checkout-cone-mode: false
+    - name: call the action to read a json file
+      uses: actions/github-script@v7
+      id: read_json
+      with:
+        result-encoding: string
+        script: |
+          try {
+            const fs = require('fs')
+            const jsonString = fs.readFileSync('${{ github.workspace }}/.github/test-files/f1.json')
+            var apps = JSON.parse(jsonString)
+            console.log(jsonString)
+            console.log(apps)
+          } catch(err) {
+            core.error("Error while reading or parsing the JSON")
+            core.setFailed(err)
+          }
