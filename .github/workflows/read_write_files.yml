@@ -76,6 +76,6 @@ jobs:
       run: | 
         jsondata=${{steps.read_json.outputs.result}}
         yamldata=${{steps.read_yaml.outputs.result}}
-        echo ${{jsondata.level0.level1.level2.level3.level4.list}}
-        echo ${{yamldata.level0.level1.level2.level3.level4.list}}
+        echo ${jsondata}.level0.level1.level2.level3.level4.list
+        echo ${yamldata}.level0.level1.level2.level3.level4.list
         
