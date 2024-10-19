@@ -60,10 +60,10 @@ jobs:
             const yaml = require('js-yaml');
             const fs = require('fs')
             const jsonString = yaml.load(fs.readFileSync('${{ github.workspace }}/${{inputs.yaml_file_path}}'))
-            var data = JSON.parse(jsonString)
+            // var data = JSON.parse(jsonString)
             console.log(jsonString)
-            console.log(data)
-            console.log(data.level0.level1.level2.level3.level4.list)
+           // console.log(data)
+           // console.log(data.level0.level1.level2.level3.level4.list)
           } catch(err) {
             core.error("Error yaml data")
             core.setFailed(err)
