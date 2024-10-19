@@ -38,7 +38,7 @@ jobs:
             const jsonString = fs.readFileSync('${{ github.workspace }}/${{inputs.json_file_path}}')
             var data = JSON.parse(jsonString)
             console.log(data)
-            console.log(data.level0.level1.level2.level3.level4.level5)
+            console.log(data.level0.level1.level2.level3.level4.list)
           } catch(err) {
             core.error("Error json data")
             core.setFailed(err)
@@ -63,7 +63,7 @@ jobs:
             var data = JSON.parse(jsonString)
             console.log(jsonString)
             console.log(data)
-            console.log(data.level0.level1.level2.level3.level4.level5)
+            console.log(data.level0.level1.level2.level3.level4.list)
           } catch(err) {
             core.error("Error yaml data")
             core.setFailed(err)
