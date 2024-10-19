@@ -8,12 +8,14 @@ on:
       yaml_file_path:
         required: true 
         type: string
+    outputs:
+      jsondata:
+        description: "The first output string"
+        value: ${{ jobs.job1.steps.jout.outputs.name }}    
 jobs:
   job1:
     name: read a json and a yaml file
     runs-on: ubuntu-latest
-    outputs:
-      jsondata: ${{ steps.jout.outputs.name }}
     steps:
     - name: checkout file
       uses: actions/checkout@v4
