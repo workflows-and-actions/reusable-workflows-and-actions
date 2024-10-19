@@ -56,7 +56,7 @@ jobs:
     - name: read data output from previous step
       id: jout
       run: |
-        echo "name=fvvfvfvf">>"$GITHUB_OUTPUT"
+        echo "name=fvvfvfvf" >> "$GITHUB_OUTPUT"
     - name: call the action to read a yaml file
       uses: actions/github-script@v7
       id: read_yaml
