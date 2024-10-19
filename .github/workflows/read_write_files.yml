@@ -13,13 +13,8 @@ jobs:
     name: read a json and a yaml file
     runs-on: ubuntu-latest
     outputs:
-      jsondata: fgrfrgfrg
-    # ${{ steps.read_json.outputs.result }}
+      jsondata: ${{ steps.jout.outputs.name }}
     steps:
-    - name: dumstep
-      id: d
-      run:
-        echo jsondata=qqqqqq>>"$GITHUB_OUTPUT"
     - name: checkout file
       uses: actions/checkout@v4
       with:
@@ -59,8 +54,9 @@ jobs:
       run: |
         npm install js-yaml
     - name: read data output from previous step
+      id: jout
       run: |
-        echo ${{steps.read_yaml.outputs.result}}
+        echo "name=${{steps.read_yaml.outputs.result.level0.name}}">>"$GITHUB_OUTPUT"
     - name: call the action to read a yaml file
       uses: actions/github-script@v7
       id: read_yaml
