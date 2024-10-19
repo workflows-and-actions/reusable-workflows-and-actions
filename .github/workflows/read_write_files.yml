@@ -8,6 +8,8 @@ on:
       yaml_file_path:
         required: true 
         type: string
+env:
+  jsondata: test
 jobs:
   job1:
     name: read a json file
@@ -73,10 +75,8 @@ jobs:
             core.setFailed(err)
           }
     - name: read data output from previous steps
-      env:
-        jsondata: test
-     # ${{steps.read_json.outputs.result}}
       run: | 
+        echo "jsondata = ${{steps.read_json.outputs.result}}">> $GITHUB_ENV
         echo '$jsondata'
     - name: log output
       run: | 
