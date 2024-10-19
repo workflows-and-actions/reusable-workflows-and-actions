@@ -57,7 +57,7 @@ jobs:
       uses: actions/github-script@v7
       id: read_yaml
       with:
-        result-encoding: string
+      # result-encoding: string
         script: |
           try {
             const yaml = require('js-yaml');
