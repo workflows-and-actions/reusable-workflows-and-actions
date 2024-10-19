@@ -76,8 +76,8 @@ jobs:
       env:
         jsondata: steps.read_json.outputs.result
       run: | 
-        echo ${{jsondata}}
-        echo ${{jsondata.level0.level1.level2.level3.level4.list}}
+        echo ${{env.jsondata}}
+        echo ${{env.jsondata.level0.level1.level2.level3.level4.list}}
       #  echo yamldata=${{steps.read_yaml.outputs.result}} >> GITHUB_ENV
       #  echo ${{yamldata.level0.level1.level2.level3.level4.list}}
         
