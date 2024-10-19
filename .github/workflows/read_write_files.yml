@@ -76,11 +76,12 @@ jobs:
           }
     - name: read data output from previous steps
       run: | 
-        echo "env.jsondata = ${{steps.read_json.outputs.result}}">> $GITHUB_ENV
+        echo "${{env.jsondata}} = newtest" >>$GITHUB_ENV
         echo ${{env.jsondata}}
     - name: log output
       run: | 
        echo ${{env.jsondata}}
+      # ${{steps.read_json.outputs.result}}">> $GITHUB_ENV
       #  echo '${{env.jsondata.level0.level1.level2.level3.level4.list}}'
       #  echo yamldata=${{steps.read_yaml.outputs.result}} >> GITHUB_ENV
       #  echo ${{yamldata.level0.level1.level2.level3.level4.list}}
