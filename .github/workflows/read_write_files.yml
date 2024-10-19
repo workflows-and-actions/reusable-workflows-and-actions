@@ -79,6 +79,7 @@ jobs:
         echo "jsondata = newtest" >> $GITHUB_ENV
         echo ${{env.jsondata}}
     - name: log output
+      if: ${{ env.jsondata == 'newtest' }} # we must accesss env vars using env context when outside a run
       run: | 
        echo ${{env.jsondata}}
       # ${{steps.read_json.outputs.result}}">> $GITHUB_ENV
