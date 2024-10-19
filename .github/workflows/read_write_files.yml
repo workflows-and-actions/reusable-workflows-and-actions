@@ -76,7 +76,7 @@ jobs:
           }
     - name: read data output from previous steps
       run: | 
-        echo "jsondata = newtest" >>$GITHUB_ENV
+        echo "jsondata = newtest" >> $GITHUB_ENV
         echo ${{env.jsondata}}
     - name: log output
       run: | 
