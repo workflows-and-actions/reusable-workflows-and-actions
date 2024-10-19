@@ -16,6 +16,10 @@ jobs:
       jsondata: fgrfrgfrg
     # ${{ steps.read_json.outputs.result }}
     steps:
+    - name: dumstep
+      id: d
+      run:
+        echo jsondata=qqqqqq>>"$GITHUB_OUTPUT"
     - name: checkout file
       uses: actions/checkout@v4
       with:
