@@ -31,14 +31,15 @@ jobs:
       uses: actions/github-script@v7
       id: read_json
       with:
-        result-encoding: string
+      # result-encoding: string
         script: |
           try {
             const fs = require('fs')
             const jsonString = fs.readFileSync('${{ github.workspace }}/${{inputs.json_file_path}}')
             var data = JSON.parse(jsonString)
-            console.log(data)
-            console.log(data.level0.level1.level2.level3.level4.list)
+            // console.log(data)
+            // console.log(data.level0.level1.level2.level3.level4.list)
+            return data
           } catch(err) {
             core.error("Error json data")
             core.setFailed(err)
@@ -57,19 +58,22 @@ jobs:
       uses: actions/github-script@v7
       id: read_yaml
       with:
+      # commenting the following will will set encoding to json
       # result-encoding: string
         script: |
           try {
             const yaml = require('js-yaml');
             const fs = require('fs')
             const data = yaml.load(fs.readFileSync('${{ github.workspace }}/${{inputs.yaml_file_path}}'))
-            console.log(data)
-            console.log(data.level0.level1.level2.level3.level4.list)
+            // console.log(data)
+            // console.log(data.level0.level1.level2.level3.level4.list)
             return data
           } catch(err) {
             core.error("Error yaml data")
             core.setFailed(err)
           }
-    - name: read data output from previous step
-      run: |
+    - name: read data output from previous steps
+      run: | 
+        echo ${{steps.read_json.outputs.result}}
         echo ${{steps.read_yaml.outputs.result}}
+        
