@@ -21,6 +21,8 @@ jobs:
           echo ${{ env.stepvar }}
       - name: update env variables
       # these updates will be available only within the current job as we are saving in GITHUB_ENV
+      # do not give any spaces across equal sign below
+      # The updated values will be available in the next step, not this step
         run: |
           echo "stepvar=stepvar_new" >> $GITHUB_ENV
           echo "globalvar=globalvar_new" >> $GITHUB_ENV          
