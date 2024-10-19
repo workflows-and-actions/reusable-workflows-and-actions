@@ -11,11 +11,13 @@ on:
     outputs:
       jsondata:
         description: "The first output string"
-        value: ${{ jobs.job1.steps.jout.outputs.name }}    
+        value: ${{ jobs.job1.outputs.name }}    
 jobs:
   job1:
     name: read a json and a yaml file
     runs-on: ubuntu-latest
+    outputs:
+      name: ${{ steps.jout.outputs.name }}
     steps:
     - name: checkout file
       uses: actions/checkout@v4
