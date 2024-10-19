@@ -49,7 +49,6 @@ jobs:
         node-version: '20.x'
     - name: install npm package  
       run: |
-        npm ci
         npm install js-yaml
     - name: call the action to read a yaml file
       uses: actions/github-script@v7
