@@ -78,7 +78,7 @@ jobs:
       run: | 
         echo '${{env.jsondata.level0.level1.level2.level3.level4.list}}'
         echo '${{toJSON(env.jsondata.level0.level1.level2.level3.level4.list)}}'
-        echo '${{fromJSON(env.jsondata.level0.level1.level2.level3.level4.list)}}'
+      #  echo '${{fromJSON(env.jsondata.level0.level1.level2.level3.level4.list)}}'
       #  echo yamldata=${{steps.read_yaml.outputs.result}} >> GITHUB_ENV
       #  echo ${{yamldata.level0.level1.level2.level3.level4.list}}
         
