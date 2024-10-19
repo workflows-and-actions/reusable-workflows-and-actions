@@ -13,7 +13,8 @@ jobs:
     name: read a json and a yaml file
     runs-on: ubuntu-latest
     outputs:
-      jsondata: ${{ steps.read_json.outputs.result }}
+      jsondata: fgrfrgfrg
+    # ${{ steps.read_json.outputs.result }}
     steps:
     - name: checkout file
       uses: actions/checkout@v4
