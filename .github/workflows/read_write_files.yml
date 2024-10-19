@@ -74,7 +74,7 @@ jobs:
           }
     - name: read data output from previous steps
       env:
-        jsondata: ${{fromJSON(steps.read_json.outputs.result)}}
+        jsondata: ${{toJSON(steps.read_json.outputs.result)}}
       run: | 
         echo '${{env.jsondata.level0.level1.level2.level3.level4.list}}'
       #  echo yamldata=${{steps.read_yaml.outputs.result}} >> GITHUB_ENV
