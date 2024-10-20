@@ -16,7 +16,7 @@ jobs:
     outputs:
       result: ${{ steps.read_json.outputs.result }}
     steps:
-      - name: ca
+      - name: call the action
         id: read_json      
         uses: workflows-and-actions/reusable-workflows-and-actions/.github/composite-actions/read_json_file@main
         with:
