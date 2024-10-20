@@ -32,7 +32,8 @@ runs:
       shell: bash
       run: |
         myvar=$(yq '.' ${{ github.workspace }}/${{inputs.file_path}})
-        yq '.level0.level1.level2' $myvar
+        myenv="{b: fish}" 
+        yq --null-input '.a = env(myenv)'
     #   myvar=$(jq '.level0.level1.level2.level3' ${{ github.workspace }}/${{inputs.file_path}})
     #   echo $myvar | jq '.'
     - name: install js-yaml
