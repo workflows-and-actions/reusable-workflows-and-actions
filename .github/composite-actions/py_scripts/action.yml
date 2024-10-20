@@ -1,6 +1,9 @@
 name: demo read python file
 description: Demo showing how to run python script
 inputs:
+  file_repo:
+    required: true  # if 'required' is 'false', set a default value using default: somevalue
+    type: string
   file_path:
     required: true  # if 'required' is 'false', set a default value using default: somevalue
     type: string
@@ -29,5 +32,10 @@ runs:
       run: |
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi    
-        python ${{ github.workspace }}/${{inputs.file_path}}
+        if [[ ${{inputs.file_repo}}=="caller"]]
+        then
+        python ${{github.workspace}}/${{inputs.file_path}}
+        else
+        python ${{github.action_path}}/../../../${{inputs.file_path}}
+        fi
         echo "result=success">>GITHUB_OUTPUT
