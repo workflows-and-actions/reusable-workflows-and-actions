@@ -35,7 +35,7 @@ runs:
     #   echo $myvar | jq '.level0.level1.level2'
     #   myvar=$(jq '.level0.level1.level2.level3' ${{ github.workspace }}/${{inputs.file_path}})
     #   echo $myvar | jq '.'
-    - run: install js-yaml
+    - name: install js-yaml
       shell: bash
       run: npm install js-yaml
     - name: call the javascript action to read the file
