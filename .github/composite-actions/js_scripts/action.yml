@@ -6,7 +6,7 @@ inputs:
     type: string
 outputs:
   data:
-    description: "json data"
+    description: "data"
     value: ${{ steps.read_json.outputs.result }} 
 runs:
   using: "composite"
