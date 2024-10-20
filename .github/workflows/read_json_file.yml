@@ -5,9 +5,6 @@ on:
       json_file_path:
         required: true 
         type: string
-      yaml_file_path:
-        required: true 
-        type: string
     outputs:
       jsondata:
         description: "The first output string"
