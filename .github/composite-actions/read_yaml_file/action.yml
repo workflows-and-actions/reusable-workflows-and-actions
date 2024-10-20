@@ -32,8 +32,8 @@ runs:
       shell: bash
       run: |
         myvar=$(yq '.level0.level1.level2.level3.level4' ${{ github.workspace }}/${{inputs.file_path}})
-    #   myvar=$(jq '.level0.level1.level2.level3' ${{ github.workspace }}/${{inputs.file_path}})
         echo $myvar | jq '.'
+    #   myvar=$(jq '.level0.level1.level2.level3' ${{ github.workspace }}/${{inputs.file_path}})
     - name: install js-yaml
       shell: bash
       run: npm install js-yaml
