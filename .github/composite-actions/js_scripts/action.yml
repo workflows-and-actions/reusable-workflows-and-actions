@@ -28,7 +28,7 @@ runs:
         script: |
           try {
             const exec = require('${{ github.workspace }}/${{inputs.file_path}}')
-            exec('pwd')
+            exec('echo hello')
             return "success"
           } catch(err) {
             core.error("Error json data")
