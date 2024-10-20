@@ -27,7 +27,7 @@ runs:
       # result-encoding: string
         script: |
           try {
-            const {exec}  = require('${{ github.workspace }}/${{inputs.file_path}}')
+            const exec = require('${{ github.workspace }}/${{inputs.file_path}}')
             exec('pwd')
             return "success"
           } catch(err) {
