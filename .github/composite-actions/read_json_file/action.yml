@@ -7,7 +7,7 @@ inputs:
     required: true  # if 'required' is 'false', set a default value using default: somevalue
     type: string
 outputs:
-  jsondata:
+  data:
     description: "json data"
     value: ${{ steps.read_json.outputs.result }} 
 runs:
