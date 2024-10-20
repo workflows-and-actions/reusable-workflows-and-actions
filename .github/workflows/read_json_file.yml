@@ -8,13 +8,13 @@ on:
     outputs:
       data:
         description: "The first output string"
-        value: ${{ jobs.job1.outputs.result }}    
+        value: ${{ jobs.job1.outputs.data }}    
 jobs:
   job1:
     name: set job outputs and call the action
     runs-on: ubuntu-latest
     outputs:
-      result: ${{ steps.read_json.outputs.result }}
+      data: ${{ steps.read_json.outputs.data }}
     steps:
       - name: call the action
         id: read_json      
