@@ -3,7 +3,7 @@ description: Demo showing how to read a json file attached to caller workflow re
 # 1. directly in shell using jq
 # 2. in javascript using another action
 inputs:
-  json_file_path:
+  file_path:
     required: true  # if 'required' is 'false', set a default value using default: somevalue
     type: string
 outputs:
@@ -18,7 +18,7 @@ runs:
       uses: actions/checkout@v4
       with:
         sparse-checkout: |
-          ${{inputs.json_file_path}}
+          ${{inputs.file_path}}
       # cone mode false means will checkout only the file/files mentioned in the path
       # default is true which checks out repository root level files unnecessarily for our case
         sparse-checkout-cone-mode: false 
@@ -29,7 +29,7 @@ runs:
         ls -al $GITHUB_WORKSPACE/.github/test-files   
     - name: read json directly in shell
       run: |
-       myvar=$(jq '.' ${{ github.workspace }}/${{inputs.json_file_path}})
+       myvar=$(jq '.' ${{ github.workspace }}/${{inputs.file_path}})
        echo $myvar | jq '.level0.level1.level2'
     - name: call the javascript action to read a json file
       uses: actions/github-script@v7
@@ -40,7 +40,7 @@ runs:
         script: |
           try {
             const fs = require('fs')
-            const jsonString = fs.readFileSync('${{ github.workspace }}/${{inputs.json_file_path}}')
+            const jsonString = fs.readFileSync('${{ github.workspace }}/${{inputs.file_path}}')
             var data = JSON.parse(jsonString)
             // console.log(data)
             // console.log(data.level0.level1.level2.level3.level4.list)
