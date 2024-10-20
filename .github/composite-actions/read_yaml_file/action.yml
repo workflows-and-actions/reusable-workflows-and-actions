@@ -28,10 +28,10 @@ runs:
         ls -al $GITHUB_WORKSPACE
         ls -al $GITHUB_WORKSPACE/.github
         ls -al $GITHUB_WORKSPACE/.github/test-files   
-    # - name: read json directly in shell
-    #  shell: bash
-    #  run: |
-    #   myvar=$(jq '.' ${{ github.workspace }}/${{inputs.file_path}})
+    - name: read json directly in shell
+      shell: bash
+      run: |
+        myvar=$(yq '.' ${{ github.workspace }}/${{inputs.file_path}})
     #   echo $myvar | jq '.level0.level1.level2'
     #   myvar=$(jq '.level0.level1.level2.level3' ${{ github.workspace }}/${{inputs.file_path}})
     #   echo $myvar | jq '.'
