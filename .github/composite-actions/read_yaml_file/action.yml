@@ -37,8 +37,7 @@ runs:
     #   echo $myvar | jq '.'
     - run: install js-yaml
       shell: bash
-      # or one-off:
-      - run: npm install js-yaml
+      run: npm install js-yaml
     - name: call the javascript action to read the file
       uses: actions/github-script@v7
       id: read_file
