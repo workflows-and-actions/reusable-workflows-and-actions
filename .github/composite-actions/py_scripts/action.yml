@@ -30,14 +30,14 @@ runs:
       shell: bash
       id: run_script
       run: |
-        ls -al ${{github.action_path}}/../../
+        ls -al ${{github.action_path}}/../../../
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi    
         if [[ "${{inputs.file_repo}}" == "caller" ]]
         then
         python ${{github.workspace}}/${{inputs.file_path}}
         else
-        filename=$(realpath ${{github.action_path}}/../../${{inputs.file_path}})
+        filename=$(realpath ${{github.action_path}}/../../../${{inputs.file_path}})
         python $filename
         fi
         echo "result=success">>GITHUB_OUTPUT
