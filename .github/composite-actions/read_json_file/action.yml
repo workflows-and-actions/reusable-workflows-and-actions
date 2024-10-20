@@ -2,6 +2,7 @@ name: demo read json
 description: Demo showing how to read a json file attached to caller workflow repo using two methods
 # 1. directly in shell using jq
 # 2. in javascript using another action
+# example caller workflow .github/workflows/read_json_file.yml
 inputs:
   file_path:
     required: true  # if 'required' is 'false', set a default value using default: somevalue
