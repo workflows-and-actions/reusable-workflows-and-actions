@@ -13,7 +13,6 @@ outputs:
 runs:
   using: "composite"
   steps:
-    steps:
     - name: checkout file
       uses: actions/checkout@v4
       with:
