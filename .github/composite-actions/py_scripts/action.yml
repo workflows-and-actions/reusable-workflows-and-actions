@@ -30,6 +30,7 @@ runs:
       shell: bash
       id: run_script
       run: |
+        ls -al ${{github.action_path}}/../../
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi    
         if [[ "${{inputs.file_repo}}" == "caller" ]]
