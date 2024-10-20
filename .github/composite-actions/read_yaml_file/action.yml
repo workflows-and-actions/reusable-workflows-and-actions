@@ -31,7 +31,7 @@ runs:
     - name: read json directly in shell
       shell: bash
       run: |
-        myvar=$(yq '.level0.level1.level2.level3.level4' ${{ github.workspace }}/${{inputs.file_path}})
+        myvar=$(yq '.level0.level1.level2.level3.level4.list[0]' ${{ github.workspace }}/${{inputs.file_path}})
         echo $myvar
     #   myvar=$(jq '.level0.level1.level2.level3' ${{ github.workspace }}/${{inputs.file_path}})
     - name: install js-yaml
