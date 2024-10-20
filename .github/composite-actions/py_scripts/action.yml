@@ -38,6 +38,7 @@ runs:
         python ${{github.workspace}}/${{inputs.file_path}}
         else
         filename=$(realpath ${{github.action_path}}/../../../${{inputs.file_path}})
-        python $filename
+        echo $filename
+        python ${{github.action_path}}/../../../${{inputs.file_path}}
         fi
         echo "result=success">>GITHUB_OUTPUT
