@@ -8,7 +8,7 @@ on:
     outputs:
       data:
         description: "The first output string"
-        value: ${{ jobs.job1.outputs.data }}    
+        value: ${{ jobs.job1.outputs.result }}    
 jobs:
   job1:
     name: set job outputs and call the action
