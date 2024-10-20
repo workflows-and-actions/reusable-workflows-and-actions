@@ -30,7 +30,8 @@ runs:
             const exec = require('${{ github.workspace }}/${{inputs.file_path}}')
             exec('echo hello')
             // execute a file in this actions repo
-             const exec2 = require('${{ github.action_path}}/.github/../../scripts/exec.js')
+            const path = require('node:path');
+            const exec2 = require(path.normalize('${{ github.action_path}}/.github/../../scripts/exec.js'))
             exec2('echo hello again')           
             return "success"
           } catch(err) {
