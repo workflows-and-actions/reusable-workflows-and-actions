@@ -1,0 +1,51 @@
+name: Demo showing how to read and write files attached to caller workflow repo
+on:
+  workflow_call:
+    inputs:
+      json_file_path:
+        required: true 
+        type: string
+      yaml_file_path:
+        required: true 
+        type: string
+    outputs:
+      jsondata:
+        description: "The first output string"
+        value: ${{ jobs.job1.outputs.result }}    
+jobs:
+  job1:
+    name: read a json and a yaml file
+    runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.read_json.outputs.result }}
+    steps:
+    - name: checkout file
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          ${{inputs.json_file_path}}
+      # cone mode false means will checkout only the file/files mentioned in the path
+      # default is true which checks out repository root level files unnecessarily for our case
+        sparse-checkout-cone-mode: false 
+    - name: see what files were checked out
+      run: |
+        ls -al $GITHUB_WORKSPACE
+        ls -al $GITHUB_WORKSPACE/.github
+        ls -al $GITHUB_WORKSPACE/.github/test-files       
+    - name: call the action to read a json file
+      uses: actions/github-script@v7
+      id: read_json
+      with:
+      # result-encoding: string
+        script: |
+          try {
+            const fs = require('fs')
+            const jsonString = fs.readFileSync('${{ github.workspace }}/${{inputs.json_file_path}}')
+            var data = JSON.parse(jsonString)
+            // console.log(data)
+            // console.log(data.level0.level1.level2.level3.level4.list)
+            return data
+          } catch(err) {
+            core.error("Error json data")
+            core.setFailed(err)
+          }
