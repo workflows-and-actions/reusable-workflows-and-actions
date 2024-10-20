@@ -36,6 +36,7 @@ runs:
         then
         python ${{github.workspace}}/${{inputs.file_path}}
         else
-        python ${{github.action_path}}/../../../${{inputs.file_path}}
+        from pathlib import Path
+        python Path('${{github.action_path}}/../../../${{inputs.file_path}}').resolve()
         fi
         echo "result=success">>GITHUB_OUTPUT
