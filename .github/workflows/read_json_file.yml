@@ -1,4 +1,4 @@
-name: Demo showing how to read and write files attached to caller workflow repo
+name: Demo showing how to read a json files attached to caller workflow repo
 on:
   workflow_call:
     inputs:
@@ -28,8 +28,11 @@ jobs:
       run: |
         ls -al $GITHUB_WORKSPACE
         ls -al $GITHUB_WORKSPACE/.github
-        ls -al $GITHUB_WORKSPACE/.github/test-files       
-    - name: call the action to read a json file
+        ls -al $GITHUB_WORKSPACE/.github/test-files   
+    - name: read json directly in shell
+      run: |
+        echo '${{ github.workspace }}/${{inputs.json_file_path}}' | jq '.'
+    - name: call the javascript action to read a json file
       uses: actions/github-script@v7
       id: read_json
       with:
