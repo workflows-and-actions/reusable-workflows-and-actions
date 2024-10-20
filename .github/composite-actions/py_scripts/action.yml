@@ -1,0 +1,33 @@
+name: demo read python file
+description: Demo showing how to run python script
+inputs:
+  file_path:
+    required: true  # if 'required' is 'false', set a default value using default: somevalue
+    type: string
+outputs:
+  data:
+    description: "data"
+    value: ${{ steps.runscript.outputs.result }} 
+runs:
+  using: "composite"
+  steps:
+    - name: checkout file
+      uses: actions/checkout@v4
+      with:
+        sparse-checkout: |
+          ${{inputs.file_path}}
+      # cone mode false means will checkout only the file/files mentioned in the path
+      # default is true which checks out repository root level files unnecessarily for our case
+        sparse-checkout-cone-mode: false 
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+    - name: Install dependencies and run script
+      shell: bash
+      id: run_script
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi    
+        python ${{ github.workspace }}/${{inputs.file_path}}
+        echo "result=success">>GITHUB_OUTPUT
