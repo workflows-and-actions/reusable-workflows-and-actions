@@ -31,7 +31,8 @@ jobs:
         ls -al $GITHUB_WORKSPACE/.github/test-files   
     - name: read json directly in shell
       run: |
-        jq '.' ${{ github.workspace }}/${{inputs.json_file_path}}
+       myvar=jq '.' ${{ github.workspace }}/${{inputs.json_file_path}}
+       echo $myvar | jq '.level0'
     - name: call the javascript action to read a json file
       uses: actions/github-script@v7
       id: read_json
