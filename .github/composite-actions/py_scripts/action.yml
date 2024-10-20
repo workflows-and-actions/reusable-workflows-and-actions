@@ -37,6 +37,6 @@ runs:
         python ${{github.workspace}}/${{inputs.file_path}}
         else
         filename=${{github.action_path}}/../../../${{inputs.file_path}}
-        python filename
+        python $filename
         fi
         echo "result=success">>GITHUB_OUTPUT
