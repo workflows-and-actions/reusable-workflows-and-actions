@@ -27,8 +27,8 @@ runs:
       # result-encoding: string
         script: |
           try {
-            const { default: cmd } = await import('${{ github.workspace }}/${{inputs.file_path}}')
-            await cmd('pwd')
+            const cmd  = require('${{ github.workspace }}/${{inputs.file_path}}')
+            cmd('pwd')
             return "success"
           } catch(err) {
             core.error("Error json data")
