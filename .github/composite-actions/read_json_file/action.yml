@@ -35,6 +35,7 @@ runs:
       uses: actions/github-script@v7
       id: read_json
       with:
+      # comment the followingto get json output result
       # result-encoding: string
         script: |
           try {
