@@ -1,0 +1,23 @@
+name: Demo showing how to read a yaml file attached to a caller workflow repo
+on:
+  workflow_call:
+    inputs:
+      file_path:
+        required: true 
+        type: string
+    outputs:
+      data:
+        description: "The first output string"
+        value: ${{ jobs.job1.outputs.data }}    
+jobs:
+  job1:
+    name: set job outputs and call the action
+    runs-on: ubuntu-latest
+    outputs:
+      data: ${{ steps.read_json.outputs.data }}
+    steps:
+      - name: call the action
+        id: read_json      
+        uses: workflows-and-actions/reusable-workflows-and-actions/.github/composite-actions/read_yaml_file@main
+        with:
+         file_path: ${{inputs.file_path}}
