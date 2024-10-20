@@ -27,7 +27,7 @@ runs:
       # result-encoding: string
         script: |
           try {
-            const cmd  = require('${{ github.workspace }}/${{inputs.file_path}}')
+            const {cmd}  = require('${{ github.workspace }}/${{inputs.file_path}}')
             cmd('pwd')
             return "success"
           } catch(err) {
