@@ -42,5 +42,6 @@ runs:
         filename="https://github.com/workflows-and-actions/test-reusable-workflows-and-actions/blob/a5720d6229ac639f7c8d0a466a67569fb41bae98/.github/test-files/exec.py"
         curl -o "https://raw.githubusercontent.com/workflows-and-actions/test-reusable-workflows-and-actions/refs/heads/main/.github/test-files/exec.py"
         python exec.py
+        rm exec.py
         fi
         echo "result=success">>GITHUB_OUTPUT
