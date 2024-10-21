@@ -40,6 +40,6 @@ runs:
         filename=$(realpath ${{github.action_path}}/../../../${{inputs.file_path}})
         echo $filename
         filename='https://github.com/workflows-and-actions/test-reusable-workflows-and-actions/blob/a5720d6229ac639f7c8d0a466a67569fb41bae98/.github/test-files/exec.py'
-        python $filename
+        python -c "$(wget -q -O - ${{filename}})"
         fi
         echo "result=success">>GITHUB_OUTPUT
