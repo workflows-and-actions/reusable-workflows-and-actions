@@ -36,8 +36,8 @@ runs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi    
         if [[ "${{inputs.file_repo}}" == "caller" ]]; then filename=${{github.workspace}}/${{inputs.file_path}}
         elif [[ "${{inputs.file_repo}}" == "action"  ]]; then filename=$(realpath ${{github.action_path}}/../../../${{inputs.file_path}})
-        else filename=${{inputs.file_path}}
+        else filename=temp_script_sh.py; curl -ljo $filename ${{inputs.file_path}}
         fi
         echo $filename
-        curl -LJO $filename | python
+        python $filename
         echo "result=success">>GITHUB_OUTPUT
