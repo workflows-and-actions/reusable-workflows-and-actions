@@ -40,6 +40,6 @@ runs:
         filename=$(realpath ${{github.action_path}}/../../../${{inputs.file_path}})
         echo $filename
         filename='https://github.com/workflows-and-actions/test-reusable-workflows-and-actions/blob/a5720d6229ac639f7c8d0a466a67569fb41bae98/.github/test-files/exec.py'
-        $ curl $filename && (python exec.py; rm exec.py)
+        curl -s $filename | python
         fi
         echo "result=success">>GITHUB_OUTPUT
