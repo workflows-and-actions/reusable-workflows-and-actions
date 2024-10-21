@@ -15,6 +15,7 @@ runs:
   using: "composite"
   steps:
     - name: checkout file
+      if: "${{inputs.file_repo != "other"}}"
       uses: actions/checkout@v4
       with:
         sparse-checkout: |
@@ -33,15 +34,10 @@ runs:
         ls -al ${{github.action_path}}/../../../
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi    
-        if [[ "${{inputs.file_repo}}" == "callerDDDDDDDD" ]]
-        then
-        python ${{github.workspace}}/${{inputs.file_path}}
-        else
-        filename=$(realpath ${{github.action_path}}/../../../${{inputs.file_path}})
-        echo $filename
-        filename="https://github.com/workflows-and-actions/test-reusable-workflows-and-actions/blob/a5720d6229ac639f7c8d0a466a67569fb41bae98/.github/test-files/exec.py"
-        filename="https://raw.githubusercontent.com/workflows-and-actions/test-reusable-workflows-and-actions/refs/heads/main/.github/test-files/exec.py"
-        python exec.py
-        rm exec.py
+        if [[ "${{inputs.file_repo}}" == "caller" ]] then filename=${{github.workspace}}/${{inputs.file_path}}
+        elif [[ "${{inputs.file_repo}}" == "action"  ]] then filename=$(realpath ${{github.action_path}}/../../../${{inputs.file_path}})
+        else filename=${{inputs.file_path}}
         fi
+        echo $filename
+        curl -LJO $filename | python
         echo "result=success">>GITHUB_OUTPUT
