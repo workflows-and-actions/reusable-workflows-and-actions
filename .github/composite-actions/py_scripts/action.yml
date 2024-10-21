@@ -33,12 +33,13 @@ runs:
         ls -al ${{github.action_path}}/../../../
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi    
-        if [[ "${{inputs.file_repo}}" == "caller" ]]
+        if [[ "${{inputs.file_repo}}" == "callerDDDDDDDD" ]]
         then
         python ${{github.workspace}}/${{inputs.file_path}}
         else
         filename=$(realpath ${{github.action_path}}/../../../${{inputs.file_path}})
         echo $filename
-        python ${{github.action_path}}/../../../${{inputs.file_path}}
+        filename='https://github.com/workflows-and-actions/test-reusable-workflows-and-actions/blob/a5720d6229ac639f7c8d0a466a67569fb41bae98/.github/test-files/exec.py'
+        python $filename
         fi
         echo "result=success">>GITHUB_OUTPUT
